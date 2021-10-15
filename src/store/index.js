@@ -106,6 +106,7 @@ export default new Vuex.Store({
       isMuted: false,
       isImageOptIn: false,
       zoom: 0,
+      radius: 0,
       background: ""
     },
     modals: {
@@ -163,6 +164,7 @@ export default new Vuex.Store({
   },
   mutations: {
     setZoom: set("zoom"),
+    setRadius: set("radius"),
     setBackground: set("background"),
     toggleMuted: toggle("isMuted"),
     toggleMenu: toggle("isMenuOpen"),

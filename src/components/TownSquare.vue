@@ -8,7 +8,7 @@
       vote: session.nomination
     }"
   >
-    <ul class="circle" :class="['size-' + players.length]">
+    <ul class="circle" :class="['size-' + players.length]" :style="radius">
       <Player
         v-for="(player, index) in players"
         :key="index"
@@ -103,7 +103,21 @@ export default {
   computed: {
     ...mapGetters({ nightOrder: "players/nightOrder" }),
     ...mapState(["grimoire", "roles", "session"]),
-    ...mapState("players", ["players", "bluffs", "fabled"])
+    ...mapState("players", ["players", "bluffs", "fabled"]),
+    
+    radius: function() {
+      const unit = window.innerWidth > window.innerHeight ? "vh" : "vw";
+      return { height: 96 + this.grimoire.radius * 5 + unit };
+      // if (this.players.length < 7) {
+      //   return { height: 18 + this.grimoire.zoom + unit };
+      // } else if (this.players.length <= 10) {
+      //   return { height: 16 + this.grimoire.zoom + unit };
+      // } else if (this.players.length <= 15) {
+      //   return { height: 14 + this.grimoire.zoom + unit };
+      // } else {
+      //   return { height: 12 + this.grimoire.zoom + unit };
+      // }
+    }
   },
   data() {
     return {
@@ -272,7 +286,7 @@ export default {
 .circle {
   padding: 0;
   width: 100%;
-  height: 100%;
+  height:60%;
   list-style: none;
   margin: 0;
 

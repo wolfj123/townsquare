@@ -83,6 +83,20 @@
               />
             </em>
           </li>
+          <li v-if="players.length">
+            Radius
+            <em>
+              <font-awesome-icon
+                @click="setRadius(grimoire.radius - 1)"
+                icon="search-minus"
+              />
+              {{ Math.round(100 + grimoire.radius * 5) }}%
+              <font-awesome-icon
+                @click="setRadius(grimoire.radius + 1)"
+                icon="search-plus"
+              />
+            </em>
+          </li>
           <li @click="setBackground">
             Background image
             <em><font-awesome-icon icon="image"/></em>
@@ -353,6 +367,7 @@ export default {
       "toggleNightOrder",
       "toggleStatic",
       "setZoom",
+      "setRadius",
       "toggleModal"
     ])
   }
